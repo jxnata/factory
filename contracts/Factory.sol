@@ -28,7 +28,7 @@ contract CollectionFactory is Ownable {
         string memory _uri
     ) external returns (address) {
         address clone = Clones.clone(implementation);
-        Base(clone).initialize(_name, _symbol, _uri);
+        Base(clone).initialize(_name, _symbol, _uri, msg.sender);
         collections.push(clone);
 
         return clone;

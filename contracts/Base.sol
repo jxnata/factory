@@ -28,10 +28,12 @@ contract Base is
     function initialize(
         string memory name_,
         string memory symbol_,
-        string memory uri_
+        string memory uri_,
+        address ownerAddress
     ) external initializer nonReentrant {
         __ERC721_init(name_, symbol_);
         __Ownable_init();
+        transferOwnership(ownerAddress);
         baseUri = uri_;
     }
 
